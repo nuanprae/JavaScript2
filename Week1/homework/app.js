@@ -1,19 +1,6 @@
 'use strict';
 
 {
-  const bookTitles = [
-    'the_capture',
-    'the_journey',
-    'the_rescue',
-    'the_siege',
-    'the_shattering',
-    'the_burning',
-    'the_hatchling',
-    'the_outcast',
-    'the_first_collier',
-    'the_coming_of_hoole',
-  ];
-
   const guardiansOfGahooleSeries = {
     the_capture: {
       title: 'The Capture',
@@ -67,28 +54,30 @@
     },
   };
 
-  const listItems = (keys, obj) => {
+  const listItems = obj => {
+    const ul = document.createElement('ul');
+    document.body.appendChild(ul);
+    const keys = Object.keys(obj);
     for (let i = 0; i < keys.length; i++) {
-      const ul = document.createElement('ul');
-      document.body.appendChild(ul);
-      const h1 = document.createElement('h1');
-      const li1 = document.createElement('li');
-      const li2 = document.createElement('li');
-      const id = keys[i];
-      const title = obj[id].title;
-      const language = obj[id].language;
-      const author = obj[id].author;
-      debugger;
+      const li = document.createElement('li');
+      const heading = document.createElement('h1');
+      const subHeading1 = document.createElement('h2');
+      const subHeading2 = document.createElement('h2');
+      const key = keys[i];
+      const title = obj[key].title;
+      const language = obj[key].language;
+      const author = obj[key].author;
       // to access a variable in an object needs []
-      h1.innerHTML = title;
-      li1.innerHTML = `Language: ${language}`;
-      li2.innerHTML = `Author: ${author}`;
+      heading.innerHTML = title;
+      subHeading1.innerHTML = `Language: ${language}`;
+      subHeading2.innerHTML = `Author: ${author}`;
 
-      ul.appendChild(h1);
-      ul.appendChild(li1);
-      ul.appendChild(li2);
+      ul.appendChild(li);
+      li.appendChild(heading);
+      li.appendChild(subHeading1);
+      li.appendChild(subHeading2);
     }
   };
 
-  listItems(bookTitles, guardiansOfGahooleSeries);
+  listItems(guardiansOfGahooleSeries);
 }
