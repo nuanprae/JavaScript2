@@ -4,9 +4,10 @@
   box-sizing: border-box;
 }
 body {
-  background-color: aqua;
+  background-color: #843e22;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   line-height: 1.5;
+  color: #843e22;
 }
 ul {
   display: grid;
@@ -19,8 +20,7 @@ li {
   flex-direction: column;
   align-items: center;
   list-style-type: none;
-  border: 1px solid black;
-  background-color: yellow;
+  background-color: #f0e6a9;
   padding: 0.5em 0;
 }
 img {
@@ -28,6 +28,7 @@ img {
   margin-top: 1em;
 }
 .title {
+  color: #f0e6a9;
   font-size: 3rem;
   text-align: center;
   margin-top: 0.5em;
