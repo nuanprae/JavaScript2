@@ -10,9 +10,9 @@ body {
 }
 ul {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2em;
-  margin: 2em;
+  margin: 1em;
 }
 li {
   display: flex;
@@ -26,4 +26,9 @@ li {
 img {
   width: 60%;
   margin-top: 1em;
+}
+.title {
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 0.5em;
 }

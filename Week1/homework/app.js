@@ -91,6 +91,14 @@
 
   // Now change the function from step 1.3 that you used to display the book ID's in a list
   // to take the actual information about the book from the object and display that.
+  const generateHeader = title => {
+    const header = document.createElement('h1');
+    header.innerHTML = title;
+    document.body.appendChild(header);
+    header.setAttribute('class', 'title');
+  };
+  generateHeader("Guardians of Ga'Hoole");
+
   const generateItems = obj => {
     const ul = document.createElement('ul');
     document.body.appendChild(ul);
