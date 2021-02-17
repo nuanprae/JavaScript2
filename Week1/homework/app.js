@@ -4,7 +4,6 @@
   const bookTitles = [
     'the_capture',
     'the_journey',
-    'the_rescue',
     'the_siege',
     'the_shattering',
     'the_burning',
@@ -12,6 +11,7 @@
     'the_outcast',
     'the_first_collier',
     'the_coming_of_hoole',
+    'the_rescue',
   ];
   const bookCovers = {
     the_capture: './img/thecapture.jpg',
@@ -77,67 +77,34 @@
       author: 'Kathryn Lasky',
     },
   };
-
-  // list bookTitle from array called bookTitles
-  // const listItems = bookTitles => {
-  //   const ul = document.createElement('ul');
-  //   document.body.appendChild(ul);
-  //   for (let i = 0; i < bookTitles.length; i++) {
-  //     const li = document.createElement('li');
-  //     const bookTitle = bookTitles[i];
-  //     li.innerHTML = bookTitle;
-  //     ul.appendChild(li);
-  //   }
-  // };
-  // listItems(bookTitles);
-  const listItems = (ids, bookInfo) => {
+  const listItems = (ids, info, images) => {
     const ul = document.createElement('ul');
     document.body.appendChild(ul);
     for (let i = 0; i < ids.length; i++) {
       const li = document.createElement('li');
-      const id = ids[i];
-      const bookInfoKeys = Object.keys(bookInfo);
-      if (id === bookInfoKeys[i]) {
-        li.innerHTML = bookInfo[bookInfoKeys[i]].title;
-        ul.appendChild(li);
-      }
+      const img = document.createElement('img');
+      const heading = document.createElement('h1');
+      const subHeading1 = document.createElement('h2');
+      const subHeading2 = document.createElement('h2');
+      li.setAttribute('id', ids[i]);
+
+      ul.appendChild(li);
+      const id = li.getAttribute('id');
+      const src = images[id];
+      const title = info[id].title;
+      const language = info[id].language;
+      const author = info[id].author;
+
+      img.src = src;
+      heading.innerHTML = title;
+      subHeading1.innerHTML = `Language: ${language}`;
+      subHeading2.innerHTML = `Author: ${author}`;
+
+      li.appendChild(img);
+      li.appendChild(heading);
+      li.appendChild(subHeading1);
+      li.appendChild(subHeading2);
     }
   };
-  listItems(bookTitles, guardiansOfGahooleSeries);
-
-  // const listItems = (img, info) => {
-  //   const ul = document.createElement('ul');
-  //   document.body.appendChild(ul);
-  //   const imgKeys = Object.keys(img);
-  //   const infoKeys = Object.keys(info);
-  //   for (let i = 0; i < infoKeys.length; i++) {
-  //     const li = document.createElement('li');
-  //     const image = document.createElement('img');
-  //     const heading = document.createElement('h1');
-  //     const subHeading1 = document.createElement('h2');
-  //     const subHeading2 = document.createElement('h2');
-
-  //     // accessing values inside object
-  //     const title = info[infoKeys[i]].title;
-  //     const language = info[infoKeys[i]].language;
-  //     const author = info[infoKeys[i]].author;
-  //     heading.innerHTML = title;
-  //     subHeading1.innerHTML = `Language: ${author}`;
-  //     subHeading2.innerHTML = `Author: ${language}`;
-
-  //     const check = () => {
-  //       if (image) {
-  //       }
-  //     };
-  //     image.src = img[imgKeys[i]];
-
-  //     ul.appendChild(li);
-  //     li.appendChild(image);
-  //     li.appendChild(heading);
-  //     li.appendChild(subHeading1);
-  //     li.appendChild(subHeading2);
-  //   }
-  // };
-
-  // listItems(bookCovers, guardiansOfGahooleSeries);
+  listItems(bookTitles, guardiansOfGahooleSeries, bookCovers);
 }
