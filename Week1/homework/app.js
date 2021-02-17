@@ -127,7 +127,7 @@
   const placeImage = images => {
     for (const key of Object.keys(images)) {
       const img = document.createElement('img');
-      img.src = bookCovers[key];
+      img.src = images[key];
       img.alt = key;
       document.getElementById(key).appendChild(img);
     }
