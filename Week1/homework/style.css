@@ -1,1 +1,29 @@
-/* add your styling here */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: aqua;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  line-height: 1.5;
+}
+ul {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2em;
+  margin: 2em;
+}
+li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
+  border: 1px solid black;
+  background-color: yellow;
+  padding: 0.5em 0;
+}
+img {
+  width: 60%;
+  margin-top: 1em;
+}
