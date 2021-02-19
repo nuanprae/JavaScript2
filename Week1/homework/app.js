@@ -94,34 +94,39 @@
   //   }
   // };
 
-  const generateHeader = title => {
-    const header = document.createElement('h1');
-    header.innerHTML = title;
+  const generateHeader = name => {
+    const header = document.createElement('header');
+    const h1 = document.createElement('h1');
+    h1.innerHTML = name;
     document.body.appendChild(header);
-    header.setAttribute('class', 'title');
+    header.appendChild(h1);
+    header.setAttribute('class', 'header');
   };
   // generate li that includes info and book cover for each li (appended to one ul)
   const generateItems = (list, info) => {
-    const ul = document.createElement('ul');
-    document.body.appendChild(ul);
+    const section = document.createElement('section');
+    document.body.appendChild(section);
     // loop over bookTitles array and append each li to ul (book info and book cover)
     for (const key of list) {
-      const li = document.createElement('li');
-      ul.appendChild(li);
-      li.setAttribute('id', key);
+      const article = document.createElement('article');
+      section.appendChild(article);
+      article.setAttribute('id', key);
 
-      const heading = document.createElement('h1');
-      li.appendChild(heading);
-      heading.innerHTML = info[key].title;
-      heading.setAttribute('class', 'heading');
+      const ul = document.createElement('ul');
+      article.appendChild(ul);
 
-      const subHeading1 = document.createElement('h2');
-      li.appendChild(subHeading1);
-      subHeading1.innerHTML = `Language: ${info[key].language}`;
+      const title = document.createElement('li');
+      ul.appendChild(title);
+      title.innerHTML = info[key].title;
+      title.setAttribute('class', 'title');
 
-      const subHeading2 = document.createElement('h2');
-      li.appendChild(subHeading2);
-      subHeading2.innerHTML = `Author: ${info[key].author}`;
+      const language = document.createElement('li');
+      ul.appendChild(language);
+      language.innerHTML = `Language: ${info[key].language}`;
+
+      const author = document.createElement('li');
+      ul.appendChild(author);
+      author.innerHTML = `Author: ${info[key].author}`;
     }
   };
 
@@ -130,7 +135,10 @@
       const img = document.createElement('img');
       img.src = images[key];
       img.alt = key;
-      document.getElementById(key).appendChild(img);
+      document
+        .getElementById(key)
+        .querySelector('ul')
+        .appendChild(img);
     }
   };
 
