@@ -1,18 +1,18 @@
 'use strict';
 
 {
-  const bookTitles = [
-    'the_capture',
-    'the_journey',
-    'the_siege',
-    'the_shattering',
-    'the_burning',
-    'the_hatchling',
-    'the_outcast',
-    'the_first_collier',
-    'the_coming_of_hoole',
-    'the_rescue',
-  ];
+  // const bookTitles = [
+  //   'the_capture',
+  //   'the_journey',
+  //   'the_siege',
+  //   'the_shattering',
+  //   'the_burning',
+  //   'the_hatchling',
+  //   'the_outcast',
+  //   'the_first_collier',
+  //   'the_coming_of_hoole',
+  //   'the_rescue',
+  // ];
   const guardiansOfGahooleSeries = {
     the_capture: {
       title: 'The Capture',
@@ -79,15 +79,15 @@
   };
 
   // Make a function (or functions) that generate a ul with li elements for each book ID in the array using a for loop.
-  const generateLi = array => {
-    const ul = document.createElement('ul');
-    document.body.appendChild(ul);
-    for (const element of array) {
-      const li = document.createElement('li');
-      li.innerHTML = element;
-      ul.appendChild(li);
-    }
-  };
+  // const generateLi = array => {
+  //   const ul = document.createElement('ul');
+  //   document.body.appendChild(ul);
+  //   for (const element of array) {
+  //     const li = document.createElement('li');
+  //     li.innerHTML = element;
+  //     ul.appendChild(li);
+  //   }
+  // };
 
   const generateHeader = title => {
     const header = document.createElement('h1');
