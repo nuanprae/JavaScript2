@@ -11,7 +11,7 @@ body {
 }
 ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2em;
   margin: 1em;
 }
@@ -31,5 +31,5 @@ img {
   color: #f0e6a9;
   font-size: 3rem;
   text-align: center;
-  margin-top: 0.5em;
+  margin-top: 0.3em;
 }

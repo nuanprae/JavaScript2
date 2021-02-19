@@ -88,9 +88,6 @@
       ul.appendChild(li);
     }
   };
-
-  // Now change the function from step 1.3 that you used to display the book ID's in a list
-  // to take the actual information about the book from the object and display that.
   const generateHeader = title => {
     const header = document.createElement('h1');
     header.innerHTML = title;
@@ -99,32 +96,29 @@
   };
   generateHeader("Guardians of Ga'Hoole");
 
-  const generateItems = obj => {
+  // generate li that includes info and book cover for each li (appended to one ul)
+  const generateItems = (info, images) => {
     const ul = document.createElement('ul');
     document.body.appendChild(ul);
-    // loop over keys from obj (turned into array of keys)
-    for (const key of Object.keys(obj)) {
+    // loop over bookObj and append each li (with info) to ul
+    for (const key of Object.keys(info)) {
       const li = document.createElement('li');
       ul.appendChild(li);
       li.setAttribute('id', key);
 
       const heading = document.createElement('h1');
       li.appendChild(heading);
-      heading.innerHTML = obj[key].title;
+      heading.innerHTML = info[key].title;
 
       const subHeading1 = document.createElement('h2');
       li.appendChild(subHeading1);
-      subHeading1.innerHTML = `Language: ${obj[key].language}`;
+      subHeading1.innerHTML = `Language: ${info[key].language}`;
 
       const subHeading2 = document.createElement('h2');
       li.appendChild(subHeading2);
-      subHeading2.innerHTML = `Author: ${obj[key].author}`;
+      subHeading2.innerHTML = `Author: ${info[key].author}`;
     }
-  };
-  generateItems(guardiansOfGahooleSeries);
-
-  // write a function which places an image at the corresponding li element.
-  const placeImage = images => {
+    // loop over bookCovers object and display the corresponding book cover for each li
     for (const key of Object.keys(images)) {
       const img = document.createElement('img');
       img.src = images[key];
@@ -132,5 +126,5 @@
       document.getElementById(key).appendChild(img);
     }
   };
-  placeImage(bookCovers);
+  generateItems(guardiansOfGahooleSeries, bookCovers);
 }
