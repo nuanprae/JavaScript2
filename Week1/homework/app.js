@@ -100,7 +100,7 @@
   const generateItems = (info, images) => {
     const ul = document.createElement('ul');
     document.body.appendChild(ul);
-    // loop over bookObj and append each li (with info) to ul
+    // loop over bookObj and append each li to ul (book info and book cover)
     for (const key of Object.keys(info)) {
       const li = document.createElement('li');
       ul.appendChild(li);
@@ -123,10 +123,6 @@
       li.appendChild(subHeading2);
       subHeading2.innerHTML = `Author: ${info[key].author}`;
     }
-    // loop over bookCovers object and display the corresponding book cover for each li
-    // for (const key of Object.keys(images)) {
-
-    // }
   };
 
   // generate page
