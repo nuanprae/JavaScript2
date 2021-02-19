@@ -1,18 +1,18 @@
 'use strict';
 
 {
-  // const bookTitles = [
-  //   'the_capture',
-  //   'the_journey',
-  //   'the_siege',
-  //   'the_shattering',
-  //   'the_burning',
-  //   'the_hatchling',
-  //   'the_outcast',
-  //   'the_first_collier',
-  //   'the_coming_of_hoole',
-  //   'the_rescue',
-  // ];
+  const bookTitles = [
+    'the_capture',
+    'the_journey',
+    'the_rescue',
+    'the_siege',
+    'the_shattering',
+    'the_burning',
+    'the_hatchling',
+    'the_outcast',
+    'the_first_collier',
+    'the_coming_of_hoole',
+  ];
   const guardiansOfGahooleSeries = {
     the_capture: {
       title: 'The Capture',
@@ -64,6 +64,11 @@
       language: 'English',
       author: 'Kathryn Lasky',
     },
+    to_be_a_king: {
+      title: 'To Be a King',
+      language: 'English',
+      author: 'Kathryn Lasky',
+    },
   };
   const bookCovers = {
     the_journey: './img/thejourney.jpg',
@@ -95,13 +100,12 @@
     document.body.appendChild(header);
     header.setAttribute('class', 'title');
   };
-
   // generate li that includes info and book cover for each li (appended to one ul)
-  const generateItems = (info, images) => {
+  const generateItems = (list, info) => {
     const ul = document.createElement('ul');
     document.body.appendChild(ul);
-    // loop over bookObj and append each li to ul (book info and book cover)
-    for (const key of Object.keys(info)) {
+    // loop over bookTitles array and append each li to ul (book info and book cover)
+    for (const key of list) {
       const li = document.createElement('li');
       ul.appendChild(li);
       li.setAttribute('id', key);
@@ -109,11 +113,7 @@
       const heading = document.createElement('h1');
       li.appendChild(heading);
       heading.innerHTML = info[key].title;
-
-      const img = document.createElement('img');
-      img.src = images[key];
-      img.alt = key;
-      document.getElementById(key).appendChild(img);
+      heading.setAttribute('class', 'heading');
 
       const subHeading1 = document.createElement('h2');
       li.appendChild(subHeading1);
@@ -125,7 +125,17 @@
     }
   };
 
+  const injectImage = images => {
+    for (const key of Object.keys(images)) {
+      const img = document.createElement('img');
+      img.src = images[key];
+      img.alt = key;
+      document.getElementById(key).appendChild(img);
+    }
+  };
+
   // generate page
   generateHeader("Guardians of Ga'Hoole");
-  generateItems(guardiansOfGahooleSeries, bookCovers);
+  generateItems(bookTitles, guardiansOfGahooleSeries);
+  injectImage(bookCovers);
 }
