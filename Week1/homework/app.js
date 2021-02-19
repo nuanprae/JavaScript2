@@ -66,7 +66,6 @@
     },
   };
   const bookCovers = {
-    the_capture: './img/thecapture.jpg',
     the_journey: './img/thejourney.jpg',
     the_rescue: './img/therescue.jpg',
     the_siege: './img/thesiege.jpg',
@@ -76,6 +75,7 @@
     the_outcast: './img/theoutcast.jpg',
     the_first_collier: './img/thefirstcollier.jpg',
     the_coming_of_hoole: './img/thecomingofhoole.jpg',
+    the_capture: './img/thecapture.jpg',
   };
 
   // Make a function (or functions) that generate a ul with li elements for each book ID in the array using a for loop.
@@ -88,13 +88,13 @@
       ul.appendChild(li);
     }
   };
+
   const generateHeader = title => {
     const header = document.createElement('h1');
     header.innerHTML = title;
     document.body.appendChild(header);
     header.setAttribute('class', 'title');
   };
-  generateHeader("Guardians of Ga'Hoole");
 
   // generate li that includes info and book cover for each li (appended to one ul)
   const generateItems = (info, images) => {
@@ -110,6 +110,11 @@
       li.appendChild(heading);
       heading.innerHTML = info[key].title;
 
+      const img = document.createElement('img');
+      img.src = images[key];
+      img.alt = key;
+      document.getElementById(key).appendChild(img);
+
       const subHeading1 = document.createElement('h2');
       li.appendChild(subHeading1);
       subHeading1.innerHTML = `Language: ${info[key].language}`;
@@ -119,12 +124,12 @@
       subHeading2.innerHTML = `Author: ${info[key].author}`;
     }
     // loop over bookCovers object and display the corresponding book cover for each li
-    for (const key of Object.keys(images)) {
-      const img = document.createElement('img');
-      img.src = images[key];
-      img.alt = key;
-      document.getElementById(key).appendChild(img);
-    }
+    // for (const key of Object.keys(images)) {
+
+    // }
   };
+
+  // generate page
+  generateHeader("Guardians of Ga'Hoole");
   generateItems(guardiansOfGahooleSeries, bookCovers);
 }
