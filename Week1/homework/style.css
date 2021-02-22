@@ -9,6 +9,9 @@ body {
   line-height: 1.5;
   color: #843e22;
 }
+section {
+  margin: 1em;
+}
 ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -26,10 +29,4 @@ li {
 img {
   width: 60%;
   margin-top: 1em;
-}
-.title {
-  color: #f0e6a9;
-  font-size: 3rem;
-  text-align: center;
-  margin-top: 0.3em;
 }

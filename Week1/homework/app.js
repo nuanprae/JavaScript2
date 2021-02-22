@@ -1,19 +1,31 @@
 'use strict';
 
 {
-  const bookTitles = [
-    'the_capture',
-    'the_journey',
-    'the_rescue',
-    'the_siege',
-    'the_shattering',
-    'the_burning',
-    'the_hatchling',
-    'the_outcast',
-    'the_first_collier',
-    'the_coming_of_hoole',
-  ];
-  const guardiansOfGahooleSeries = {
+  // const bookTitles = [
+  //   'the_capture',
+  //   'the_journey',
+  //   'the_rescue',
+  //   'the_siege',
+  //   'the_shattering',
+  //   'the_burning',
+  //   'the_hatchling',
+  //   'the_outcast',
+  //   'the_first_collier',
+  //   'the_coming_of_hoole',
+  // ];
+
+  // Make a function (or functions) that generate a ul with li elements for each book ID in the array using a for loop.
+  // const generateLi = array => {
+  //   const ul = document.createElement('ul');
+  //   document.body.appendChild(ul);
+  //   for (const element of array) {
+  //     const li = document.createElement('li');
+  //     li.innerHTML = element;
+  //     ul.appendChild(li);
+  //   }
+  // };
+
+  const books = {
     the_capture: {
       title: 'The Capture',
       language: 'English',
@@ -64,12 +76,8 @@
       language: 'English',
       author: 'Kathryn Lasky',
     },
-    to_be_a_king: {
-      title: 'To Be a King',
-      language: 'English',
-      author: 'Kathryn Lasky',
-    },
   };
+
   const bookCovers = {
     the_journey: './img/thejourney.jpg',
     the_rescue: './img/therescue.jpg',
@@ -83,46 +91,29 @@
     the_capture: './img/thecapture.jpg',
   };
 
-  // Make a function (or functions) that generate a ul with li elements for each book ID in the array using a for loop.
-  // const generateLi = array => {
-  //   const ul = document.createElement('ul');
-  //   document.body.appendChild(ul);
-  //   for (const element of array) {
-  //     const li = document.createElement('li');
-  //     li.innerHTML = element;
-  //     ul.appendChild(li);
-  //   }
-  // };
-
-  const generateHeader = title => {
-    const header = document.createElement('h1');
-    header.innerHTML = title;
-    document.body.appendChild(header);
-    header.setAttribute('class', 'title');
-  };
   // generate li that includes info and book cover for each li (appended to one ul)
-  const generateItems = (list, info) => {
+  const generateBooks = info => {
+    const section = document.createElement('section');
     const ul = document.createElement('ul');
-    document.body.appendChild(ul);
-    // loop over bookTitles array and append each li to ul (book info and book cover)
-    for (const key of list) {
+    for (const key of Object.keys(info)) {
       const li = document.createElement('li');
-      ul.appendChild(li);
       li.setAttribute('id', key);
+      const title = document.createElement('h2');
+      const language = document.createElement('h3');
+      const author = document.createElement('h3');
 
-      const heading = document.createElement('h1');
-      li.appendChild(heading);
-      heading.innerHTML = info[key].title;
-      heading.setAttribute('class', 'heading');
+      title.innerText = info[key].title;
+      language.innerText = `Language: ${info[key].language}`;
+      author.innerText = `Author: ${info[key].author}`;
 
-      const subHeading1 = document.createElement('h2');
-      li.appendChild(subHeading1);
-      subHeading1.innerHTML = `Language: ${info[key].language}`;
+      li.appendChild(title);
+      li.appendChild(language);
+      li.appendChild(author);
 
-      const subHeading2 = document.createElement('h2');
-      li.appendChild(subHeading2);
-      subHeading2.innerHTML = `Author: ${info[key].author}`;
+      ul.appendChild(li);
     }
+    section.appendChild(ul);
+    document.body.appendChild(section);
   };
 
   const injectImage = images => {
@@ -135,7 +126,6 @@
   };
 
   // generate page
-  generateHeader("Guardians of Ga'Hoole");
-  generateItems(bookTitles, guardiansOfGahooleSeries);
+  generateBooks(books);
   injectImage(bookCovers);
 }
