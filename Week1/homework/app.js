@@ -121,7 +121,9 @@
       const img = document.createElement('img');
       img.src = images[key];
       img.alt = key;
-      document.getElementById(key).appendChild(img);
+
+      const secondLi = document.getElementById(key).children[1];
+      document.getElementById(key).insertBefore(img, secondLi);
     }
   };
 
