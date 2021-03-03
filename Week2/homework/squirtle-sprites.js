@@ -9,3 +9,21 @@ function fetchPokemonData() {
 }
 
 /* Code goes below */
+const data = JSON.parse(fetchPokemonData());
+
+const displaySprites = () => {
+  const section = document.createElement('section');
+
+  const spritesKeys = Object.keys(data.sprites);
+  spritesKeys.forEach(key => {
+    const img = document.createElement('img');
+    if (data.sprites[key]) {
+      img.src = data.sprites[key];
+      section.appendChild(img);
+    }
+  });
+
+  document.body.appendChild(section);
+};
+
+displaySprites();
