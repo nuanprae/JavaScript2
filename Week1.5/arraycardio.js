@@ -14,6 +14,7 @@ const inventors = [
 ];
 
 const people = [
+  'Biondo, Frank',
   'Bernhard, Sandra',
   'Bethea, Erin',
   'Becker, Carl',
@@ -54,7 +55,6 @@ const people = [
   'Birrell, Augustine',
   'Blair, Tony',
   'Beecher, Henry',
-  'Biondo, Frank',
 ];
 
 // 1. Filter the list of inventors for those who were born in the 1500's
@@ -88,14 +88,22 @@ console.table(oldest);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-const category = document.querySelector('.mw-category');
-const li = [...category.querySelectorAll('a')];
-const de = li.map(li => li.textContent).filter(street => street.includes('de'));
+// const category = document.querySelector('.mw-category');
+// const li = [...category.querySelectorAll('a')];
+// const de = li.map(li => li.textContent).filter(street => street.includes('de'));
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
-const lastnames = people.sort();
-console.log(lastnames);
+const byLastNames = people.sort((a, b) => {
+  const [aLastName, aFirstName] = a.split(', ');
+  const [bLastName, bFirstName] = b.split(', ');
+  return aLastName > bLastName ? 1 : -1;
+});
+console.log(byLastNames);
+
+// simplier way for the array provided
+const sortAlphabetically = people.sort();
+console.log(sortAlphabetically);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
@@ -117,6 +125,10 @@ const data = [
   'truck',
 ];
 const instances = data.reduce((obj, item) => {
+  if (!obj[item]) {
+    obj[item] = 0;
+  }
+  obj[item]++;
   return obj;
 }, {});
 console.log(instances);
