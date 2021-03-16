@@ -21,3 +21,6 @@ f2(y);
 console.log(y);
 
 // Add your explanation as a comment here
+// x is passed by value, so it remains 9.
+// y which is an object is passed by reference (referencing to a memory address which has been modified
+// by the function f2) arrays, objects are passed by reference
